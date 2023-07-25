@@ -35,6 +35,10 @@ st.sidebar.markdown("Built with OpenAI's GPT-3")
 st.sidebar.caption("*Not optimized")
 st.sidebar.caption("*May run out of OpenAI credits")
 #
+st.sidebar.markdown("---")
+openai_key = st.sidebar.text_input("OpenAI API Key", "sk-<your-key>")
+openai_model = st.sidebar.text_input("Model Name", "text-davinci-003")
+#
 
 st.title("Wisher AI")
 st.markdown("**Personalized Wish Creator: Make Every Celebration Unforgettable!**")
@@ -44,11 +48,6 @@ st.markdown("""Welcome to our Personalized Wish Creator,
                     This easy-to-use tool allows you to input key information 
                     such as name, age, and specific occasions like birthdays, 
                     promotions, and much more.""")
-
-with st.container():
-    st.divider()
-    openai_key = st.text_input("OpenAI API Key", "sk-<your-key>")
-    openai_model = st.text_input("Model Name", "text-davinci-003")
 
 with st.container():
     st.divider()
