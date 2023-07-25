@@ -11,10 +11,15 @@ def on_generate_message():
     
 def generate_message():
     with st.spinner("Generating message..."):
+        openai.api_key = st.secrets["OPENAI_API_KEY"]
+        model = "text-babbage-001"
         prompt = f"""I want you to write a {wish_category} message for "{wish_name}" 
         turning {wish_age} tomorrow.  Let it be {wish_tone}!"""
-        return prompt
-        #return "Happy Birthday, John! I hope you have a wonderful day and a great year ahead. I'm so proud of you for all that you've accomplished so far. I can't wait to see what the future holds for you! Love, Mom"
+        result = openai.Completion.create(model=model,
+                                          prompt=prompt,
+                                          temperature=0.9,
+                                          max_tokens=120)
+        return result.choices[0].text
 #
 st.sidebar.title("Wisher AI")
 st.sidebar.markdown("Personalized Wish Creator: Make Every Celebration Unforgettable!")
